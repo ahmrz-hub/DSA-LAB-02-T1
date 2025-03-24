@@ -1,0 +1,61 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class Employee
+{
+public:
+	virtual float calculatesalary() = 0;
+	
+};
+class Fulltimeemployee: public Employee
+{
+	string name;
+	float sal;
+
+public:
+	Fulltimeemployee():name(NULL),sal(0.0){}
+	Fulltimeemployee(string n,float s) :name(n),sal(s) {}
+
+	float calculatesalary( )override
+	{
+		return sal;
+	}
+	void display()
+	{
+		cout << "Full Time Employee" << endl;
+		cout << "Name:" << name << endl;
+		cout << "Salary:" << calculatesalary() << endl;
+	}
+
+};
+class Parttimeemployee : public Employee
+{
+	string name;
+	float hoursworked,hourlyrate;
+	
+public:
+	Parttimeemployee():name(NULL),hoursworked(0.0), hourlyrate(0.0){}
+	Parttimeemployee(string n,float hw,float hr) : name(n), hoursworked(hw), hourlyrate(hr) {}
+
+	 float calculatesalary( )override
+	 {
+		 return hoursworked * hourlyrate;
+	 }
+	 void display()
+	 {
+		 cout << "Part Time Employee" << endl;
+		 cout << "Name:" << name << endl;
+		 cout << "Salary:" << calculatesalary() << endl;
+	 }
+
+};
+
+int main()
+{
+	Fulltimeemployee c1("Ahmad",90000);
+	c1.display();
+	Parttimeemployee R1("Ali",12,15);
+	R1.display();
+	
+	return 0;
+}
